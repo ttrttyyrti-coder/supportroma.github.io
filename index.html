@@ -65,6 +65,15 @@
   .bank{font-size:14px;font-weight:700;color:var(--dark-muted)}
   .cardno a{color:inherit;text-decoration:none}
   .cardno{font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;letter-spacing:.04em;word-break:break-word}
+  .tiers{display:flex;flex-direction:column;gap:10px}
+  .tier{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:14px 16px;border-radius:14px;background:#333;color:#fff;text-decoration:none;border:2px solid transparent;transition:transform .15s}
+  .tier:active{transform:scale(.98)}
+  .tier-hot{border-color:var(--accent)}
+  .tier-l{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .tier-n{font-weight:800;font-size:17px}
+  .tier-d{font-size:14px;color:var(--dark-muted)}
+  .tier-p{flex:none;padding:8px 14px;border-radius:999px;background:var(--accent);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:800;font-size:17px}
+  .tier-p small{font-size:12px;font-weight:700;margin-left:2px}
   .copy{min-height:52px;border-radius:14px;border:0;background:var(--accent);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;cursor:pointer;transition:transform .15s}
   .copy:active{transform:scale(.98)}
   .copy:focus-visible,.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
@@ -119,9 +128,34 @@
     <div class="pay">
       <div>
         <div class="pay-h">Pay by card</div>
-        <div class="pay-sub">Fastest way from anywhere in the world. Secure checkout on Patreon — one month or monthly, cancel anytime.</div>
+        <div class="pay-sub">Choose a level and pay with any card, Apple Pay or Google Pay. Secure checkout on Patreon, cancel anytime.</div>
       </div>
-      <a class="copy" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="https://www.patreon.com/join/backmyrace" target="_blank" rel="noopener">Support on Patreon</a>
+      <div class="tiers">
+        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850668" target="_blank" rel="noopener">
+          <span class="tier-l"><span class="tier-n">Choose your amount</span><span class="tier-d">Any amount from €5 — raise it at checkout</span></span>
+          <span class="tier-p">€5<small>/mo</small></span>
+        </a>
+        <a class="tier tier-hot" href="https://www.patreon.com/checkout/backmyrace?rid=29850708" target="_blank" rel="noopener">
+          <span class="tier-l"><span class="tier-n">Supporter</span><span class="tier-d">Real help for the season</span></span>
+          <span class="tier-p">€35<small>/mo</small></span>
+        </a>
+        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850682" target="_blank" rel="noopener">
+          <span class="tier-l"><span class="tier-n">Team</span><span class="tier-d">Camps, gear and race entries</span></span>
+          <span class="tier-p">€50<small>/mo</small></span>
+        </a>
+        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850689" target="_blank" rel="noopener">
+          <span class="tier-l"><span class="tier-n">Sponsor</span><span class="tier-d">Major support for the season</span></span>
+          <span class="tier-p">€150<small>/mo</small></span>
+        </a>
+        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850721" target="_blank" rel="noopener">
+          <span class="tier-l"><span class="tier-n">Partner</span><span class="tier-d">Open to collaboration</span></span>
+          <span class="tier-p">€1,000<small>/mo</small></span>
+        </a>
+        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850726" target="_blank" rel="noopener">
+          <span class="tier-l"><span class="tier-n">Main Sponsor</span><span class="tier-d">Partnership & brand visibility</span></span>
+          <span class="tier-p">€2,500<small>/mo</small></span>
+        </a>
+      </div>
     </div>
 
     <div class="pay">
