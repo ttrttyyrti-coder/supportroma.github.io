@@ -66,6 +66,8 @@
   .copy{min-height:52px;border-radius:14px;border:0;background:var(--accent);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;cursor:pointer;transition:transform .15s}
   .copy:active{transform:scale(.98)}
   .copy:focus-visible,.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  .steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.5;color:#FFFFFF}
+  .steps li::marker{color:var(--accent);font-weight:800}
   .thanks{font-size:16px;line-height:1.5;font-weight:700}
 
   footer{max-width:600px;margin:0 auto;padding:0 16px 40px;font-size:13px;line-height:1.6;color:var(--muted);text-align:center}
@@ -137,6 +139,19 @@
       </div>
       <div class="cardno">2200 2418 7532 3499</div>
       <button class="copy" type="button" data-copy="2200241875323499" data-done="Скопировано ✓">Скопировать номер</button>
+    </div>
+
+    <div class="pay">
+      <div>
+        <div class="pay-h">Can’t send to a card directly?</div>
+        <div class="pay-sub">Many banks in Europe and the US can’t send to a foreign card number. Paysend can — it takes about 3 minutes:</div>
+      </div>
+      <ol class="steps">
+        <li>Download the <b>Paysend</b> app or open paysend.com and sign up</li>
+        <li>Choose <b>Kyrgyzstan</b> → <b>Send to card</b></li>
+        <li>Enter one of the Visa numbers above and the name <b>ROMAN NARCHUGANOV</b>, then pay with your own card</li>
+      </ol>
+      <div class="pay-sub">Still not working? Message me on Instagram and I’ll send you bank transfer details.</div>
     </div>
 
     <p class="thanks">Thank you for being part of this season.</p>
