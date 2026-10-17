@@ -68,8 +68,11 @@
   .tiers{display:flex;flex-direction:column;gap:10px}
   .tier{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:14px 16px;border-radius:14px;background:#2B3849;color:#fff;text-decoration:none;border:2px solid transparent;transition:transform .15s}
   .tier:active{transform:scale(.98)}
-  .tier-hot{border-color:var(--accent);background:#323F52}
-  .tier-hot .tier-p{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+  .tier{width:100%;font:inherit;text-align:left;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+  .tier.is-selected{border-color:var(--accent);background:#323F52}
+  .tier.is-selected .tier-p{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+  .tier:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  .go{display:flex;align-items:center;justify-content:center;text-decoration:none}
   .tier-l{display:flex;flex-direction:column;gap:2px;min-width:0}
   .tier-n{font-weight:800;font-size:17px}
   .tier-d{font-size:14px;color:var(--dark-muted)}
@@ -132,31 +135,32 @@
         <div class="pay-sub">Choose a level and pay with any card, Apple Pay or Google Pay. Secure checkout on Patreon, cancel anytime.</div>
       </div>
       <div class="tiers">
-        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850668" target="_blank" rel="noopener">
+        <button type="button" class="tier" data-rid="29850668" aria-pressed="false">
           <span class="tier-l"><span class="tier-n">Choose your amount</span><span class="tier-d">Any amount from €5 — raise it at checkout</span></span>
           <span class="tier-p">€5<small>/mo</small></span>
-        </a>
-        <a class="tier tier-hot" href="https://www.patreon.com/checkout/backmyrace?rid=29850708" target="_blank" rel="noopener">
+        </button>
+        <button type="button" class="tier is-selected" data-rid="29850708" aria-pressed="true">
           <span class="tier-l"><span class="tier-n">Supporter</span><span class="tier-d">Real help for the season</span></span>
           <span class="tier-p">€35<small>/mo</small></span>
-        </a>
-        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850682" target="_blank" rel="noopener">
+        </button>
+        <button type="button" class="tier" data-rid="29850682" aria-pressed="false">
           <span class="tier-l"><span class="tier-n">Team</span><span class="tier-d">Camps, gear and race entries</span></span>
           <span class="tier-p">€50<small>/mo</small></span>
-        </a>
-        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850689" target="_blank" rel="noopener">
+        </button>
+        <button type="button" class="tier" data-rid="29850689" aria-pressed="false">
           <span class="tier-l"><span class="tier-n">Sponsor</span><span class="tier-d">Major support for the season</span></span>
           <span class="tier-p">€150<small>/mo</small></span>
-        </a>
-        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850721" target="_blank" rel="noopener">
+        </button>
+        <button type="button" class="tier" data-rid="29850721" aria-pressed="false">
           <span class="tier-l"><span class="tier-n">Partner</span><span class="tier-d">Open to collaboration</span></span>
           <span class="tier-p">€1,000<small>/mo</small></span>
-        </a>
-        <a class="tier" href="https://www.patreon.com/checkout/backmyrace?rid=29850726" target="_blank" rel="noopener">
+        </button>
+        <button type="button" class="tier" data-rid="29850726" aria-pressed="false">
           <span class="tier-l"><span class="tier-n">Main Sponsor</span><span class="tier-d">Partnership & brand visibility</span></span>
           <span class="tier-p">€2,500<small>/mo</small></span>
-        </a>
+        </button>
       </div>
+      <a class="copy go" id="tierGo" href="https://www.patreon.com/checkout/backmyrace?rid=29850708" target="_blank" rel="noopener">Continue — <span id="tierGoPrice">€35</span>/mo</a>
     </div>
 
     <div class="pay">
@@ -224,6 +228,20 @@
     try { document.execCommand('copy'); } catch (e) {}
     document.body.removeChild(t);
   }
+  (function () {
+    var tiers = document.querySelectorAll('.tier');
+    var go = document.getElementById('tierGo');
+    var price = document.getElementById('tierGoPrice');
+    tiers.forEach(function (t) {
+      t.addEventListener('click', function () {
+        tiers.forEach(function (x) { x.classList.remove('is-selected'); x.setAttribute('aria-pressed', 'false'); });
+        t.classList.add('is-selected');
+        t.setAttribute('aria-pressed', 'true');
+        go.href = 'https://www.patreon.com/checkout/backmyrace?rid=' + t.getAttribute('data-rid');
+        price.textContent = t.querySelector('.tier-p').firstChild.textContent.trim();
+      });
+    });
+  })();
 </script>
 </body>
 </html>
